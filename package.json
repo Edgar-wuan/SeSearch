@@ -1,0 +1,95 @@
+{
+  "name": "eSearch",
+  "version": "1.7.0",
+  "description": "识屏 · 搜索",
+  "main": "main.js",
+  "scripts": {
+    "rebuild": "electron-rebuild -f -w",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder -p never"
+  },
+  "author": {
+    "name": "xsf",
+    "email": "xushengfeng_zg@163.com"
+  },
+  "homepage": "https://github.com/xushengfeng/eSearch/",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "color": "^4.2.3",
+    "download": "^8.0.0",
+    "electron-store": "^8.0.1",
+    "grapheme-splitter": "^1.0.4",
+    "hotkeys-js": "^3.9.0",
+    "jsqr": "^1.4.0",
+    "opencv.js": "^1.2.1",
+    "robotjs": "^0.6.0",
+    "uiohook-napi": "^1.2.0"
+  },
+  "devDependencies": {
+    "electron": "^18.1.0",
+    "electron-builder": "^23.0.3",
+    "electron-rebuild": "^3.2.7",
+    "node-abi": "^3.15.0"
+  },
+  "rebuild": "npm rebuild --runtime=electron --target=18.1.0 --disturl=https://atom.io/download/atom-shell --abi=103",
+  "build": {
+    "appId": "com.esearch.app",
+    "directories": {
+      "output": "build"
+    },
+    "compression": "maximum",
+    "icon": "./assets/logo",
+    "electronDownload": {
+      "mirror": "https://npmmirror.com/mirrors/electron/"
+    },
+    "npmRebuild": false,
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "tar.gz",
+        "deb",
+        "rpm"
+      ],
+      "files": [
+        "!.vscode",
+        "!.github",
+        "!assets/logo/icon.icns",
+        "!assets/logo/icon.ico",
+        "!src"
+      ]
+    },
+    "mac": {
+      "files": [
+        "!lib/gtk-open-with",
+        "!lib/kde-open-with",
+        "!.vscode",
+        "!.github",
+        "!assets/logo/1024x1024.png",
+        "!assets/logo/512x512.png",
+        "!assets/logo/icon.ico",
+        "!src"
+      ]
+    },
+    "win": {
+      "icon": "./assets/logo/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "files": [
+        "!lib/gtk-open-with",
+        "!lib/kde-open-with",
+        "!.vscode",
+        "!.github",
+        "!assets/logo/icon.icns",
+        "!assets/logo/1024x1024.png",
+        "!assets/logo/512x512.png",
+        "!src"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

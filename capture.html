@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>eSearch - 截屏</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="supported-color-schemes" content="light dark">
+    <link rel="stylesheet" type="text/css" href="css/root.css">
+    <link rel="stylesheet" type="text/css" href="css/clip.css">
+    <link rel="stylesheet" type="text/css" href="css/edit.css">
+    <link rel="stylesheet" type="text/css" href="css/template2.css">
+</head>
+
+<body>
+    <!-- 侧栏 -->
+    <div id="windows_bar">
+        <button id="windows_bar_close"><img src="./assets/icons/close.svg" class="icon"></button>
+        <div id="screens"></div>
+        <div id="img_history"></div>
+    </div>
+
+    <!-- 居中弹窗 -->
+    <div id="center_bar">
+        <!-- 保存栏 -->
+        <div id="save_type">
+            <div>保存文件格式为</div>
+            <div name="文件格式" id="suffix">
+                <div data-value="png">png</div>
+                <div data-value="jpg">jpg</div>
+                <div data-value="svg" title="可编辑类型">svg</div>
+            </div>
+        </div>
+        <!-- 编辑命令行 -->
+        <div id="draw_edit">
+            <input type="text" name="" id="" spellcheck="false" placeholder="$0是选中元素，基于Fabric.js API">
+            <button id="draw_edit_run" title="运行命令"><img src="./assets/icons/command.svg" class="icon"></button>
+            <button id="draw_edit_clear" title="清空输出"><img src="./assets/icons/clear.svg" class="icon"></button>
+            <div id="draw_edit_output"></div>
+        </div>
+    </div>
+
+    <!-- 工具栏 -->
+    <div id="tool_bar">
+        <div id="tool_close" title="关闭"><img src="./assets/icons/close.svg" class="icon"></div>
+        <div id="tool_ocr" title="OCR(文字识别)">
+            <img src="./assets/icons/ocr.svg" class="icon">
+            <select name="ocr引擎" id="ocr引擎" class="side_select">
+                <option value="离线">离线</option>
+                <option value="baidu">百度</option>
+                <option value="youdao">有道</option>
+            </select>
+        </div>
+        <div id="tool_search" title="以图搜图">
+            <img src="./assets/icons/search.svg" class="icon">
+            <select name="识图引擎" id="识图引擎" class="side_select">
+                <option value="baidu">百度</option>
+                <option value="yandex">Yandex</option>
+                <option value="google">Google</option>
+            </select>
+
+        </div>
+        <div id="tool_QR" title="QR码"><img src="./assets/icons/scan.svg" class="icon"></div>
+        <div id="tool_draw" title="图像编辑"><img src="./assets/icons/draw.svg" class="icon"></div>
+        <div id="tool_open" title="其他应用打开"><img src="./assets/icons/open.svg" class="icon"></div>
+        <div id="tool_ding" title="放在屏幕上"><img src="./assets/icons/ding.svg" class="icon"></div>
+        <div id="tool_record" title="录屏"><img src="./assets/icons/record.svg" class="icon"></div>
+        <div id="tool_copy" title="复制"><img src="./assets/icons/copy.svg" class="icon"></div>
+        <div id="tool_save" title="保存"><img src="./assets/icons/save.svg" class="icon"></div>
+    </div>
+    <!-- 编辑栏 -->
+    <div id="draw_bar">
+        <!-- 左侧主按钮 -->
+        <div id="draw_main">
+            <div id="draw_free" title="自由绘画"><img src="./assets/icons/free_draw.svg" class="icon"></div>
+            <div id="draw_shapes" title="形状和文字"><img src="./assets/icons/shapes.svg" class="icon"></div>
+            <div id="draw_filters" title="滤镜"><img src="./assets/icons/filters.svg" class="icon"></div>
+            <div id="draw_color" title="颜色和大小">
+                <div></div>
+            </div>
+            <div id="draw_position" title="层叠高度"><img src="./assets/icons/position.svg" class="icon"></div>
+            <div id="draw_操作" title="操作"><img src="./assets/icons/setting.svg" class="icon"></div>
+        </div>
+        <!-- 副按钮 -->
+        <div id="draw_side">
+            <!-- draw_free -->
+            <div class="draw_items" id="draw_free_i">
+                <lock-b id="draw_free_pencil" title="画笔"><img src="./assets/icons/draw.svg" class="icon"></lock-b>
+                <lock-b id="draw_free_eraser" title="橡皮"><img src="./assets/icons/eraser.svg" class="icon"></lock-b>
+                <lock-b id="draw_free_spray" title="喷刷"><img src="./assets/icons/spray.svg" class="icon"></lock-b>
+                <div id="shadow_blur">
+                    <range-b text="px" value="0" min="0" max="20" title="画笔阴影"></range-b>
+                </div>
+            </div>
+            <!-- draw_shapes -->
+            <div class="draw_items" id="draw_shapes_i">
+                <div id="draw_shapes_line" title="线条"><img src="./assets/icons/line.svg" class="icon"></div>
+                <div id="draw_shapes_circle" title="圆"><img src="./assets/icons/circle.svg" class="icon"></div>
+                <div id="draw_shapes_rect" title="矩形"><img src="./assets/icons/rect.svg" class="icon"></div>
+                <div id="draw_shapes_polyline" title="折线"><img src="./assets/icons/polyline.svg" class="icon"></div>
+                <div id="draw_shapes_polygon" title="多边形"><img src="./assets/icons/polygon.svg" class="icon"></div>
+                <div id="draw_shapes_text" title="文字"><img src="./assets/icons/text.svg" class="icon"></div>
+            </div>
+            <!-- draw_filters -->
+            <div class="draw_items" id="draw_filters_i">
+                <div id="draw_filters_select" title="选择区域">
+                    <img src="./assets/icons/add.svg" class="icon">
+                    <lock-b></lock-b>
+                </div>
+                <div id="draw_filters_pixelate" title="马赛克">
+                    <range-b text="px" value="0" max="20"></range-b>
+                </div>
+                <div id="draw_filters_blur" title="模糊">
+                    <range-b text="%" value="0" max="200"></range-b>
+                </div>
+                <div id="draw_filters_brightness" title="亮度">
+                    <img src="./assets/icons/brightness.svg" class="icon">
+                    <range-b value="0" min="-1" max="1" step="0.01"></range-b>
+                </div>
+                <div id="draw_filters_contrast" title="对比度">
+                    <img src="./assets/icons/contrast.svg" class="icon">
+                    <range-b value="0" min="-1" max="1" step="0.01">
+                    </range-b>
+                </div>
+                <div id="draw_filters_saturation" title="饱和度">
+                    <img src="./assets/icons/saturation.svg" class="icon">
+                    <range-b value="0" min="-1" max="1" step="0.01"></range-b>
+                </div>
+                <div id="draw_filters_hue" title="色调">
+                    <img src="./assets/icons/hue.svg" class="icon">
+                    <range-b value="0" min="-1" max="1" step="0.01">
+                    </range-b>
+                </div>
+                <div id="draw_filters_gamma" title="伽马">
+                    <range-b value="1" min="0.01" max="2.2" step="0.01" title="红"></range-b>
+                    <range-b value="1" min="0.01" max="2.2" step="0.01" title="绿"></range-b>
+                    <range-b value="1" min="0.01" max="2.2" step="0.01" title="蓝"></range-b>
+                </div>
+                <div id="draw_filters_noise" title="噪点">
+                    <range-b value="0" min="0" max="1000"></range-b>
+                </div>
+                <div id="draw_filters_grayscale">
+                    <lock-b title="灰度-平均模式"></lock-b>
+                    <lock-b title="灰度-亮度模式"></lock-b>
+                    <lock-b title="灰度-光度模式"></lock-b>
+                </div>
+                <div id="draw_filters_bs">
+                    <div id="draw_filters_invert" title="负片">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_sepia" title="棕褐色">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_bw" title="黑白">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_brownie" title="布朗尼">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_vintage" title="老式">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_koda" title="柯达彩色胶片">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_techni" title="特艺色彩">
+                        <lock-b></lock-b>
+                    </div>
+                    <div id="draw_filters_polaroid" title="宝丽来">
+                        <lock-b></lock-b>
+                    </div>
+                </div>
+
+            </div>
+            <!-- draw_color&size -->
+            <div class="draw_items">
+                <div id="draw_color_input">
+                    <div contenteditable="true" spellcheck="false" id="draw_color_fill"
+                        style="background-color: #FFFFFF;color: #000000;" title="填充颜色">#FFFFFF</div>
+                    <div contenteditable="true" spellcheck="false" id="draw_color_stroke"
+                        style="background-color: #333333;color: #FFFFFF;" title="边框颜色">#333333</div>
+                </div>
+                <div id="draw_color_alpha">
+                    <range-b text="%" value="100" title="填充不透明度"></range-b>
+                    <range-b text="%" value="100" title="边框不透明度"></range-b>
+                </div>
+                <div id="draw_color_color"></div>
+                <div id="draw_stroke_width">
+                    <range-b text="px" min=0 max=20 value="1" title="边框宽度"></range-b>
+                </div>
+                <div id="draw_edit_b" title="命令行高级编辑"><img src="./assets/icons/command.svg" class="icon"></div>
+            </div>
+            <!-- draw_position -->
+            <div class="draw_items" id="draw_position_i">
+                <div id="draw_position_front" title="移动到最顶端"><img src="./assets/icons/position_front.svg" class="icon">
+                </div>
+                <div id="draw_position_forwards" title="向上移动一层"><img src="./assets/icons/position_forwards.svg"
+                        class="icon"></div>
+                <div id="draw_position_backwards" title="向下移动一层"><img src="./assets/icons/position_backwards.svg"
+                        class="icon"></div>
+                <div id="draw_position_back" title="移动到最底端"><img src="./assets/icons/position_back.svg" class="icon">
+                </div>
+            </div>
+            <!-- draw_操作 -->
+            <div class="draw_items" id="draw_操作_i">
+                <div id="操作_撤回" title="撤回"><img src="./assets/icons/left.svg" class="icon"></div>
+                <div id="操作_重做" title="重做"><img src="./assets/icons/right.svg" class="icon"></div>
+                <div id="操作_复制" title="复制"><img src="./assets/icons/copy.svg" class="icon"></div>
+                <div id="操作_删除" title="删除"><img src="./assets/icons/clear.svg" class="icon"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 显示 -->
+    <canvas id="main_photo"></canvas>
+    <canvas id="clip_photo"></canvas>
+    <div id="draw_photo_top">
+        <canvas id="draw_photo"></canvas>
+    </div>
+
+    <!-- 大小栏 -->
+    <div id="clip_wh">
+        <div id="x0y0" contenteditable="true" title="左上角坐标"></div>
+        <div id="x1y1" contenteditable="true" title="右下角坐标"></div>
+        <div id="wh" contenteditable="true" title="大小"></div>
+    </div>
+
+    <!-- 鼠标栏 -->
+    <div id="mouse_bar" style="display: none;">
+        <div id="point_color"></div>
+        <div id="clip_xy"></div>
+        <div id="clip_copy">
+            <div></div>
+        </div>
+    </div>
+
+    <!-- 扫描线 -->
+    <svg id="waiting">
+        <line x1="0" x2="100%" y1="0" y2="0" stroke="#00f" stroke-width="2">
+            <animate attributeName="y1" values="0;100%;0" dur="3s" repeatCount="indefinite" begin="indefinite"
+                calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"></animate>
+            <animate attributeName="y2" values="0;100%;0" dur="3s" repeatCount="indefinite" begin="indefinite"
+                calcMode="spline" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"></animate>
+        </line>
+    </svg>
+
+    <script src="lib/template2.js"></script>
+    <script src="js/clip_window.js"></script>
+    <script src="js/clip.js"></script>
+</body>
+
+</html>
