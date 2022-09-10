@@ -1,0 +1,202 @@
+:root {
+    --hover-color: var(--bar-hover-color) !important;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+#photo {
+    width: 100%;
+    height: 100%;
+}
+.ding_photo {
+    position: fixed;
+    overflow: hidden;
+}
+.ding_photo:hover {
+    box-shadow: var(--shadow);
+}
+#tool_bar {
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+#tool_bar_c {
+    display: none;
+    align-items: center;
+    backdrop-filter: var(--blur);
+    background: var(--bar-bg);
+    width: 100%;
+    transform: translateY(-105%);
+    transition: var(--transition);
+    user-select: none;
+}
+#tool_bar_c > div {
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+}
+#size > span {
+    cursor: text;
+}
+.img {
+    position: absolute;
+    width: 100%;
+    user-select: none;
+}
+#size_main_p {
+    display: none;
+    pointer-events: none;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border-radius);
+    backdrop-filter: var(--blur);
+    background: var(--bar-bg);
+    padding: 8px;
+    transition: var(--transition);
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 150px;
+    border-radius: 10px;
+    height: 20px;
+    box-shadow: var(--shadow);
+    cursor: ew-resize;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #0000;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: var(--color);
+    border-radius: 10px;
+}
+
+.opacity,
+.size {
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+.opacity > .icon,
+.size > .icon {
+    width: 40px;
+}
+#size > span {
+    outline: none;
+}
+
+#b {
+    margin: 8px 8px 8px auto !important;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+}
+#b:hover {
+    box-shadow: var(--shadow);
+}
+#b > button {
+    border: none;
+    transition: var(--transition);
+    background-color: #0000;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+}
+#b > button:hover {
+    background-color: var(--hover-color);
+}
+#b > button > .icon {
+    width: 40px;
+}
+
+.minimize {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+#dock {
+    position: fixed;
+    height: 50px;
+    width: 10px;
+    left: 0;
+    top: 0;
+    background-color: var(--bar-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    z-index: 2;
+}
+
+.dock {
+    width: 200px !important;
+    height: 100% !important;
+    top: 0 !important;
+    border-radius: 0 !important;
+}
+
+#dock > div {
+    overflow: hidden;
+    width: 100%;
+    display: none;
+}
+#dock_item {
+    padding: 8px 8px 0 8px;
+    box-sizing: border-box;
+}
+#dock img {
+    width: 100%;
+}
+#dock_item > div {
+    display: none;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-color: var(--bar-bg);
+    transition: var(--transition);
+    border-radius: 50%;
+    margin: 8px;
+    backdrop-filter: var(--blur);
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#dock_item > #i_close {
+    right: 8px;
+}
+#dock_item > #i_close:hover {
+    background-color: #f00;
+}
+#dock_item > #i_close:hover > .icon {
+    filter: invert(1);
+}
+
+#dock_item > #i_ignore {
+    right: 40px;
+}
+
+#dock_item > #i_ignore:hover {
+    background-color: var(--hover-color);
+}
